@@ -26,7 +26,7 @@ namespace TesterApp.Api472.Data
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
                     .ConnectionString(c => c
-                        .FromConnectionStringWithKey("Server=localhost;Database=TesterApp;Trusted_Connection=True;TrustServerCertificate=True;"))
+                        .FromConnectionStringWithKey("TesterAppDatabase"))
                     .Dialect<CustomMsSqlDialect>())
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CustomerMap>())
                 .ExposeConfiguration(cfg =>
