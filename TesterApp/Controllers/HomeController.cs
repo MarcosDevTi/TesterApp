@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using TesterApp.Domain.Services;
 using TesterApp.Models;
 
 namespace TesterApp.Controllers
@@ -7,10 +8,12 @@ namespace TesterApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICustomerGenerator _generator;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICustomerGenerator generator)
         {
             _logger = logger;
+            this._generator = generator;
         }
 
         public IActionResult Index()
@@ -18,9 +21,10 @@ namespace TesterApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> GenerateCustomers()
         {
-            return View();
+            await _generator.Generate100();
+            return this.RedirectToAction(nameof(this.Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

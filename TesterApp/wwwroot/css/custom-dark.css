@@ -1,0 +1,12 @@
+﻿body, .card, .modal-content {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+a, .btn-link {
+    color: #9fcdff;
+}
+
+.navbar, .footer {
+    background-color: #212529;
+}

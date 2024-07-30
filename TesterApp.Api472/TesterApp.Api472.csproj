@@ -171,13 +171,17 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Builders\DialectFunctionBuilder.cs" />
+    <Compile Include="Builders\PersistenceConfigurerBuilder.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Data\AddDaysGenerator.cs" />
     <Compile Include="Data\CustomerMap.cs" />
+    <Compile Include="Data\CustomHqlGeneratorBuilder.cs" />
+    <Compile Include="Data\CustomLinqToHqlGeneratorsRegistry.cs" />
     <Compile Include="Data\CustomMsSqlDialect.cs" />
-    <Compile Include="Data\ExtendedLinqToHqlGeneratorsRegistry.cs" />
-    <Compile Include="Data\NHibernateHelper.cs" />
+    <Compile Include="Data\NHPersistense.cs" />
+    <Compile Include="Data\SessionFactoryBuilder.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

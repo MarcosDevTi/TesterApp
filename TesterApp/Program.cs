@@ -1,13 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using TesterApp.Data;
+using TesterApp.Data.Services;
+using TesterApp.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-   // options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection"))
     );
+
+builder.Services.AddScoped<ICustomerGenerator, CustomerGenerator>();
 
 builder.Services.AddControllersWithViews();
 
