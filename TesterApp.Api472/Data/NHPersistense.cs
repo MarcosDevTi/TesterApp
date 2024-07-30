@@ -16,18 +16,7 @@ namespace TesterApp.Api472.Data
     {
         private ISessionFactory _sessionFactory;
         private List<(MethodInfo MethodInfo, ISQLFunction Function)> _generators = new List<(MethodInfo MethodInfo, ISQLFunction Function)>();
-        public ISessionFactory SessionFactory
-        {
-            get
-            {
-                if (_sessionFactory == null)
-                {
-                   
-                    _sessionFactory = CreateSessionFactory();
-                }
-                return _sessionFactory;
-            }
-        }
+        public ISessionFactory SessionFactory => this._sessionFactory ?? (this._sessionFactory = this.CreateSessionFactory());
 
         public void AddDialects(params (MethodInfo MethodInfo, ISQLFunction Function)[] dialects)
         {
@@ -48,8 +37,6 @@ namespace TesterApp.Api472.Data
 
             var persistenceConfigurerBuilder = new PersistenceConfigurerBuilder().WithConnectionStringKey("TesterAppDatabase")
                 .WithDialect<CustomMsSqlDialect>();
-
-           // Action<Configuration> config = 
 
             return Fluently.Configure()
                 .Database(persistenceConfigurerBuilder.Build())

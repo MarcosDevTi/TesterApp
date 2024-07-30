@@ -6,26 +6,26 @@ namespace TesterApp.Api472.Builders
 {
     public class PersistenceConfigurerBuilder
     {
-        private string connectionStringKey;
-        private string dialectQualifiedName;
+        private string _connectionStringKey;
+        private string _dialectQualifiedName;
 
         public PersistenceConfigurerBuilder WithConnectionStringKey(string key)
         {
-            connectionStringKey = key;
+            this._connectionStringKey = key;
             return this;
         }
 
         public PersistenceConfigurerBuilder WithDialect<T>() where T : Dialect
         {
-            dialectQualifiedName = typeof(T).AssemblyQualifiedName;
+            this._dialectQualifiedName = typeof(T).AssemblyQualifiedName;
             return this;
         }
 
         public IPersistenceConfigurer Build()
         {
             return MsSqlConfiguration.MsSql2012
-                .ConnectionString(c => c.FromConnectionStringWithKey(connectionStringKey))
-                .Dialect(dialectQualifiedName);
+                .ConnectionString(c => c.FromConnectionStringWithKey(this._connectionStringKey))
+                .Dialect(this._dialectQualifiedName);
         }
     }
 }
